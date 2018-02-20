@@ -1,0 +1,34 @@
+<br>
+<div class="row">
+  <div class="col-12">
+    <div class="input-group">
+      <input [(ngModel)]="searchTerm" type="text" class="form-control" placeholder="Search Patents">
+      <button class="btn btn-default input-group-append" (click)="searchPatents(searchTerm)"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+</div>
+<br>
+<div class="card">
+  <div class="card-header">
+    Search Results:
+  </div>
+  <div class="card-body">
+    <div class="row" *ngFor="let patent of displayedCollection">
+      <div class="col-sm-12">
+        <b>{{patent.Title}}</b>
+      </div>
+      <div class="col-12 text-truncate">
+        {{patent.Abstract}}
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="col-xs-12 col-12">
+      <pagination class="float-right pagination-sm" [totalItems]="patents.length" [(ngModel)]="currentPage" [maxSize]="5"
+                [boundaryLinks]="true" [rotate]="false" [itemsPerPage]="itemsPerPage" (pageChanged)="pageChanged($event)"
+                  previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+    </div>
+  </div>
+</div>
